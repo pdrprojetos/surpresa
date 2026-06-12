@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>PedroFlix | Feliz Dia dos Namorados</title>
     
-    <!-- Meta tags para preview do WhatsApp/Redes Sociais -->
+    <!-- Meta tags para preview perfeito no WhatsApp -->
     <meta property="og:title" content="PedroFlix | Feliz Dia dos Namorados">
     <meta property="og:description" content="Uma surpresa especial para a Dra. Anny. Nossa história de 8 meses em uma temporada inesquecível.">
     <meta property="og:type" content="website">
@@ -14,7 +14,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     
     <script>
-        // Configuração customizada do Tailwind
+        // Configuração customizada do Tailwind (Cores idênticas à Netflix)
         tailwind.config = {
             theme: {
                 extend: {
@@ -28,15 +28,12 @@
     </script>
 
     <style>
-        /* Estilos base e resets para mobile */
+        /* Estilos base e anti-bugs de mobile */
         html { scroll-behavior: smooth; }
         body { background-color: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; overflow-x: hidden; -webkit-tap-highlight-color: transparent; }
         
-        /* Ajuste de contraste para Tailwind */
         .text-slate-200 { color: #e5e5e5; }
         .text-slate-300 { color: #b3b3b3; }
-
-        /* Estilização da seleção de texto */
         ::selection { background-color: rgba(229, 9, 20, 0.5); color: white; }
         
         /* Cenas do Suspense (Intro) */
@@ -53,7 +50,7 @@
         .animate-n { animation: netflixN 3s forwards cubic-bezier(0.4, 0, 0.2, 1); }
 
         /* Animação Suave Entrada (Scroll) */
-        .scroll-hidden { opacity: 0; transform: translateY(30px); transition: opacity 1s out, transform 1s ease-out; will-change: transform, opacity; }
+        .scroll-hidden { opacity: 0; transform: translateY(30px); transition: opacity 1s ease-out, transform 1s ease-out; will-change: transform, opacity; }
         .scroll-visible { opacity: 1; transform: translateY(0); }
         
         /* Efeito Ken Burns nas fotos da intro */
@@ -70,7 +67,7 @@
         }
         .btn-attention { animation: pulse-red 2s infinite; }
 
-        /* Quebra de linha opcional em mobile */
+        /* Utilitário para quebra de linha opcional em mobile */
         .br-mobile { display: block; }
         @media (min-width: 768px) { .br-mobile { display: inline; } }
     </style>
@@ -94,14 +91,12 @@
             <span class="text-netflixRed text-[12rem] md:text-[20rem] font-black tracking-tighter drop-shadow-[0_0_30px_rgba(229,9,20,0.5)]">N</span>
         </div>
 
-        <!-- Cenas de Foto + Texto -->
         <!-- Cena 1 -->
         <div id="scene-1" class="scene p-4 md:p-6">
             <div class="absolute inset-0 z-0 ken-burns-img bg-cover bg-center bg-no-repeat" style="background-image: url('foto1.jpg');"></div>
             <div class="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/40 z-1"></div>
-            
             <div class="relative z-10 w-full max-w-4xl flex flex-col items-center">
-                <img src="foto1.jpg" class="h-[45vh] md:h-[60vh] object-contain rounded-sm shadow-2xl border border-neutral-800 mb-8 md:mb-12" onerror="this.style.display='none'">
+                <img src="foto1.jpg" class="h-[45vh] md:h-[60vh] object-contain rounded-sm shadow-2xl border border-neutral-800 mb-8 md:mb-12" onerror="this.style.display='none'" alt="Cena 1">
                 <h2 class="text-center leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)] px-4 text-2xl md:text-4xl text-white font-light tracking-wide">Há exatos 8 meses, nossa história deu o primeiro play...</h2>
             </div>
         </div>
@@ -110,9 +105,8 @@
         <div id="scene-2" class="scene p-4 md:p-6">
             <div class="absolute inset-0 z-0 ken-burns-img bg-cover bg-center bg-no-repeat" style="background-image: url('foto2.jpg');"></div>
             <div class="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/40 z-1"></div>
-            
             <div class="relative z-10 w-full max-w-4xl flex flex-col items-center">
-                <img src="foto2.jpg" class="h-[45vh] md:h-[60vh] object-contain rounded-sm shadow-2xl border border-neutral-800 mb-8 md:mb-12" onerror="this.style.display='none'">
+                <img src="foto2.jpg" class="h-[45vh] md:h-[60vh] object-contain rounded-sm shadow-2xl border border-neutral-800 mb-8 md:mb-12" onerror="this.style.display='none'" alt="Cena 2">
                 <h2 class="text-center leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)] px-4 text-2xl md:text-4xl text-white font-light tracking-wide">...e no meio do nosso próprio carnaval, <br class="br-mobile">eu encontrei o meu lugar.</h2>
             </div>
         </div>
@@ -121,9 +115,8 @@
         <div id="scene-3" class="scene p-4 md:p-6">
             <div class="absolute inset-0 z-0 ken-burns-img bg-cover bg-center bg-no-repeat" style="background-image: url('foto4.jpg');"></div>
             <div class="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/40 z-1"></div>
-            
             <div class="relative z-10 w-full max-w-4xl flex flex-col items-center">
-                <img src="foto4.jpg" class="h-[45vh] md:h-[60vh] object-contain rounded-sm shadow-2xl border border-neutral-800 mb-8 md:mb-12" onerror="this.style.display='none'">
+                <img src="foto4.jpg" class="h-[45vh] md:h-[60vh] object-contain rounded-sm shadow-2xl border border-neutral-800 mb-8 md:mb-12" onerror="this.style.display='none'" alt="Cena 3">
                 <h2 class="text-center leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)] px-4 text-2xl md:text-4xl text-white font-light tracking-wide">Eu vi você brilhar, conquistar seus sonhos <br class="br-mobile">e se tornar uma fonoaudióloga incrível.</h2>
             </div>
         </div>
@@ -132,9 +125,8 @@
         <div id="scene-4" class="scene p-4 md:p-6">
             <div class="absolute inset-0 z-0 ken-burns-img bg-cover bg-center bg-no-repeat" style="background-image: url('foto3.jpg');"></div>
             <div class="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/40 z-1"></div>
-            
             <div class="relative z-10 w-full max-w-4xl flex flex-col items-center">
-                <img src="foto3.jpg" class="h-[45vh] md:h-[60vh] object-contain rounded-sm shadow-2xl border border-neutral-800 mb-8 md:mb-12" onerror="this.style.display='none'">
+                <img src="foto3.jpg" class="h-[45vh] md:h-[60vh] object-contain rounded-sm shadow-2xl border border-neutral-800 mb-8 md:mb-12" onerror="this.style.display='none'" alt="Cena 4">
                 <h2 class="text-center leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)] px-4 text-2xl md:text-4xl text-white font-light tracking-wide">De todos os roteiros, roupas e momentos <br class="br-mobile">que já dividimos...</h2>
             </div>
         </div>
@@ -212,7 +204,6 @@
     <section class="px-5 md:px-16 py-16 md:py-20 bg-darkBg">
         <div class="w-16 h-1.5 bg-netflixRed mb-8 scroll-hidden rounded-full"></div>
         <h2 class="text-2xl md:text-4xl font-bold text-white mb-10 md:mb-12 scroll-hidden tracking-tight">Cenas Marcantes (8 Meses)</h2>
-        
         <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5 md:gap-6 max-w-7xl mx-auto">
             <!-- Renderizado via JS -->
         </div>
@@ -276,32 +267,14 @@
 
         // --- INICIALIZAÇÃO ---
         document.addEventListener('DOMContentLoaded', () => {
-            renderGallery();
             renderEpisodes();
+            renderGallery();
             initScrollAnimation();
         });
 
         // --- FUNÇÕES ---
 
-        function renderGallery() {
-            let html = '';
-            for (let i = 1; i <= TOTAL_FOTOS; i++) {
-                const imgUrl = `foto${i}.jpg`;
-                html += `
-                    <div class="relative aspect-[4/5] md:aspect-[16/9] bg-neutral-900 rounded-sm overflow-hidden cursor-pointer group shadow-xl border border-transparent hover:border-neutral-700 transition-all duration-300 flex items-center justify-center scroll-hidden overflow-hidden" onclick="playEpisodeHint()">
-                        <div class="absolute inset-0 w-full h-full bg-cover bg-center blur-xl opacity-30 scale-110 z-0" style="background-image: url('${imgUrl}')"></div>
-                        <img src="${imgUrl}" loading="lazy" class="relative z-10 max-h-full max-w-full object-contain drop-shadow-2xl transition-transform duration-500 ease-out group-hover:scale-105" alt="Cena Marcante ${i}" onerror="handleImgError(this)">
-                        <div class="absolute inset-0 z-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40 backdrop-blur-sm">
-                            <div class="w-16 h-16 rounded-full border-2 border-white flex items-center justify-center bg-black/20 text-white shadow-2xl">
-                                <span class="text-3xl ml-1.5">▶</span>
-                            </div>
-                        </div>
-                    </div>
-                `;
-            }
-            els.gallery.innerHTML = html;
-        }
-
+        // Renderiza os 8 episódios dinamicamente
         function renderEpisodes() {
             const episodesContainer = document.getElementById('episodes-container');
             const episodesList = [
@@ -331,6 +304,25 @@
                 `;
             });
             episodesContainer.innerHTML = epHtml;
+        }
+
+        function renderGallery() {
+            let html = '';
+            for (let i = 1; i <= TOTAL_FOTOS; i++) {
+                const imgUrl = `foto${i}.jpg`;
+                html += `
+                    <div class="relative aspect-[4/5] md:aspect-[16/9] bg-neutral-900 rounded-sm overflow-hidden cursor-pointer group shadow-xl border border-transparent hover:border-neutral-700 transition-all duration-300 flex items-center justify-center scroll-hidden overflow-hidden" onclick="playEpisodeHint()">
+                        <div class="absolute inset-0 w-full h-full bg-cover bg-center blur-xl opacity-30 scale-110 z-0" style="background-image: url('${imgUrl}')"></div>
+                        <img src="${imgUrl}" loading="lazy" class="relative z-10 max-h-full max-w-full object-contain drop-shadow-2xl transition-transform duration-500 ease-out group-hover:scale-105" alt="Cena Marcante ${i}" onerror="handleImgError(this)">
+                        <div class="absolute inset-0 z-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40 backdrop-blur-sm">
+                            <div class="w-16 h-16 rounded-full border-2 border-white flex items-center justify-center bg-black/20 text-white shadow-2xl">
+                                <span class="text-3xl ml-1.5">▶</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+            els.gallery.innerHTML = html;
         }
 
         function handleImgError(img) {
@@ -370,6 +362,7 @@
             });
         }
 
+        // Função segura para finalizar a intro (Livre de bugs de scroll)
         function finishIntro() {
             clearAllTimeouts();
             hideAllScenes();
@@ -377,16 +370,26 @@
             document.body.style.overflow = '';
             document.removeEventListener('touchmove', preventScroll, { passive: false });
             els.nav.classList.remove('opacity-0');
+            
             if (isPlaying) {
-                els.music.play().catch(e => console.error(e));
+                els.music.play().catch(e => console.error("Auto-play final bloqueado:", e));
             }
         }
 
         els.btnSkip.addEventListener('click', finishIntro);
 
         els.btnPlay.addEventListener('click', () => {
+            // HACK DE ÁUDIO BLINDADO PARA MOBILE
             if (isFirstPlay) {
-                els.music.play().then(() => els.music.pause()).catch(() => {});
+                els.tudum.load();
+                els.music.load();
+                
+                let p1 = els.tudum.play();
+                if(p1 !== undefined) p1.then(() => els.tudum.pause()).catch(() => {});
+                
+                let p2 = els.music.play();
+                if(p2 !== undefined) p2.then(() => els.music.pause()).catch(() => {});
+                
                 isFirstPlay = false;
                 els.btnPlay.classList.remove('btn-attention');
             }
@@ -396,10 +399,10 @@
                 els.playIcon.innerText = "⏸";
                 els.playText.innerText = "Pausar";
 
-                if (els.music.currentTime === 0) {
+                if (els.music.currentTime === 0 || els.music.paused) {
                     startIntroTimeline();
                 } else {
-                    els.music.play().catch(e => console.error(e));
+                    els.music.play().catch(e => console.error("Erro ao dar play:", e));
                 }
             } else {
                 pauseContext();
@@ -413,20 +416,23 @@
             els.music.pause();
             els.tudum.pause();
             if(!els.intro.classList.contains('hidden')) {
-                finishIntro();
+                finishIntro(); // Limpa e fecha a intro se pausar no meio
             }
         }
 
         function startIntroTimeline() {
             clearAllTimeouts();
             hideAllScenes();
+            
             els.intro.classList.remove('hidden');
             document.body.style.overflow = 'hidden';
             document.addEventListener('touchmove', preventScroll, { passive: false });
             window.scrollTo(0, 0);
+            
             els.nav.classList.add('opacity-0');
             els.btnSkip.classList.add('opacity-0');
 
+            // Play direto nos áudios
             els.tudum.currentTime = 0;
             els.tudum.play().catch(() => {});
             
