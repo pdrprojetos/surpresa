@@ -14,7 +14,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
     
     <script>
-        // Configuração customizada do Tailwind
         tailwind.config = {
             theme: {
                 extend: {
@@ -30,10 +29,12 @@
     <style>
         html { scroll-behavior: smooth; }
         body { background-color: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; overflow-x: hidden; -webkit-tap-highlight-color: transparent; }
+        
         .text-slate-200 { color: #e5e5e5; }
         .text-slate-300 { color: #b3b3b3; }
         ::selection { background-color: rgba(229, 9, 20, 0.5); color: white; }
         
+        /* Cenas do Suspense (Intro) */
         .scene { opacity: 0; pointer-events: none; transition: opacity 1.2s ease-in-out; position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 10; }
         .scene.active { opacity: 1; pointer-events: auto; }
         
@@ -45,10 +46,15 @@
         }
         .animate-n { animation: netflixN 3s forwards cubic-bezier(0.4, 0, 0.2, 1); }
 
+        /* Animação Suave Entrada (Scroll) */
         .scroll-hidden { opacity: 0; transform: translateY(30px); transition: opacity 1s ease-out, transform 1s ease-out; will-change: transform, opacity; }
         .scroll-visible { opacity: 1; transform: translateY(0); }
         
-        @keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.1); } }
+        /* Efeito Ken Burns nas fotos da intro */
+        @keyframes kenBurns { 
+            from { transform: scale(1); } 
+            to { transform: scale(1.1); } 
+        }
         .scene.active .ken-burns-img { animation: kenBurns 10s linear forwards; }
         
         @keyframes pulse-red { 
@@ -56,65 +62,64 @@
             70% { box-shadow: 0 0 0 15px rgba(229, 9, 20, 0); } 
         }
         .btn-attention { animation: pulse-red 2s infinite; }
-        .br-mobile { display: block; }
-        @media (min-width: 768px) { .br-mobile { display: inline; } }
     </style>
 </head>
-<body class="antialiased selection:bg-red-600/50">
+<body class="antialiased">
 
-    <!-- Elementos de Áudio com Preload Total -->
+    <!-- Áudios em pré-carregamento -->
     <audio id="audio-music" src="all-of-me.mp3" loop preload="auto"></audio>
     <audio id="audio-tudum" src="tudum.mp3" preload="auto"></audio>
 
     <!-- 🎬 ABERTURA (O SUSPENSE) -->
     <div id="intro-overlay" class="fixed inset-0 z-[99999] bg-black hidden touch-none flex items-center justify-center overflow-hidden">
+        
         <button id="btn-skip" class="absolute bottom-10 right-6 z-[100000] bg-black/40 hover:bg-neutral-800 border border-neutral-600 text-white px-5 py-2.5 rounded-sm text-sm md:text-base font-medium transition-all flex items-center gap-2 opacity-0 cursor-pointer shadow-2xl" style="transition: opacity 1s; transition-delay: 5s;">
-            PULAR ABERTURA <span class="text-xl">⏭</span>
+            PULAR ABERTURA <span class="text-lg">⏭</span>
         </button>
 
         <div id="scene-0" class="scene z-50">
             <span class="text-netflixRed text-[12rem] md:text-[20rem] font-black tracking-tighter drop-shadow-[0_0_30px_rgba(229,9,20,0.5)]">N</span>
         </div>
 
-        <!-- Cenas de Foto + Texto -->
-        <div id="scene-1" class="scene p-4 md:p-6">
-            <div class="absolute inset-0 z-0 ken-burns-img bg-cover bg-center bg-no-repeat" style="background-image: url('foto1.jpg');"></div>
-            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/40 z-1"></div>
-            <div class="relative z-10 w-full max-w-4xl flex flex-col items-center">
-                <img src="foto1.jpg" class="h-[45vh] md:h-[60vh] object-contain rounded-sm shadow-2xl border border-neutral-800 mb-8 md:mb-12" onerror="this.style.display='none'" alt="Cena 1">
-                <h2 class="text-center leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)] px-4 text-2xl md:text-4xl text-white font-light tracking-wide">Há exatos 8 meses, nossa história deu o primeiro play...</h2>
+        <!-- Cenas Ajustadas: Fundo limpo, imagem em object-contain e texto com brilho -->
+        <div id="scene-1" class="scene p-4 md:p-6 w-full">
+            <div class="absolute inset-0 z-0 ken-burns-img bg-cover bg-center bg-no-repeat opacity-40 blur-2xl scale-110" style="background-image: url('foto1.jpg');"></div>
+            <div class="absolute inset-0 z-10 bg-black/60"></div>
+            <div class="relative z-20 w-full max-w-4xl flex flex-col items-center">
+                <img src="foto1.jpg" class="h-[45vh] md:h-[55vh] w-auto object-contain rounded-md shadow-2xl border border-white/10 mb-8 md:mb-12" onerror="this.style.display='none'" alt="Cena 1">
+                <h2 class="text-center leading-snug drop-shadow-[0_4px_10px_rgba(0,0,0,0.9)] px-2 text-2xl md:text-4xl text-white font-light tracking-wide">Há exatos 8 meses, nossa história deu o primeiro play...</h2>
             </div>
         </div>
 
-        <div id="scene-2" class="scene p-4 md:p-6">
-            <div class="absolute inset-0 z-0 ken-burns-img bg-cover bg-center bg-no-repeat" style="background-image: url('foto2.jpg');"></div>
-            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/40 z-1"></div>
-            <div class="relative z-10 w-full max-w-4xl flex flex-col items-center">
-                <img src="foto2.jpg" class="h-[45vh] md:h-[60vh] object-contain rounded-sm shadow-2xl border border-neutral-800 mb-8 md:mb-12" onerror="this.style.display='none'" alt="Cena 2">
-                <h2 class="text-center leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)] px-4 text-2xl md:text-4xl text-white font-light tracking-wide">...e no meio do nosso próprio carnaval, <br class="br-mobile">eu encontrei o meu lugar.</h2>
+        <div id="scene-2" class="scene p-4 md:p-6 w-full">
+            <div class="absolute inset-0 z-0 ken-burns-img bg-cover bg-center bg-no-repeat opacity-40 blur-2xl scale-110" style="background-image: url('foto2.jpg');"></div>
+            <div class="absolute inset-0 z-10 bg-black/60"></div>
+            <div class="relative z-20 w-full max-w-4xl flex flex-col items-center">
+                <img src="foto2.jpg" class="h-[45vh] md:h-[55vh] w-auto object-contain rounded-md shadow-2xl border border-white/10 mb-8 md:mb-12" onerror="this.style.display='none'" alt="Cena 2">
+                <h2 class="text-center leading-snug drop-shadow-[0_4px_10px_rgba(0,0,0,0.9)] px-2 text-2xl md:text-4xl text-white font-light tracking-wide">...e no meio do nosso próprio carnaval, eu encontrei o meu lugar.</h2>
             </div>
         </div>
 
-        <div id="scene-3" class="scene p-4 md:p-6">
-            <div class="absolute inset-0 z-0 ken-burns-img bg-cover bg-center bg-no-repeat" style="background-image: url('foto4.jpg');"></div>
-            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/40 z-1"></div>
-            <div class="relative z-10 w-full max-w-4xl flex flex-col items-center">
-                <img src="foto4.jpg" class="h-[45vh] md:h-[60vh] object-contain rounded-sm shadow-2xl border border-neutral-800 mb-8 md:mb-12" onerror="this.style.display='none'" alt="Cena 3">
-                <h2 class="text-center leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)] px-4 text-2xl md:text-4xl text-white font-light tracking-wide">Eu vi você brilhar, conquistar seus sonhos <br class="br-mobile">e se tornar uma fonoaudióloga incrível.</h2>
+        <div id="scene-3" class="scene p-4 md:p-6 w-full">
+            <div class="absolute inset-0 z-0 ken-burns-img bg-cover bg-center bg-no-repeat opacity-40 blur-2xl scale-110" style="background-image: url('foto4.jpg');"></div>
+            <div class="absolute inset-0 z-10 bg-black/60"></div>
+            <div class="relative z-20 w-full max-w-4xl flex flex-col items-center">
+                <img src="foto4.jpg" class="h-[45vh] md:h-[55vh] w-auto object-contain rounded-md shadow-2xl border border-white/10 mb-8 md:mb-12" onerror="this.style.display='none'" alt="Cena 3">
+                <h2 class="text-center leading-snug drop-shadow-[0_4px_10px_rgba(0,0,0,0.9)] px-2 text-2xl md:text-4xl text-white font-light tracking-wide">Eu vi você brilhar, conquistar seus sonhos e se tornar uma fonoaudióloga incrível.</h2>
             </div>
         </div>
 
-        <div id="scene-4" class="scene p-4 md:p-6">
-            <div class="absolute inset-0 z-0 ken-burns-img bg-cover bg-center bg-no-repeat" style="background-image: url('foto3.jpg');"></div>
-            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/40 z-1"></div>
-            <div class="relative z-10 w-full max-w-4xl flex flex-col items-center">
-                <img src="foto3.jpg" class="h-[45vh] md:h-[60vh] object-contain rounded-sm shadow-2xl border border-neutral-800 mb-8 md:mb-12" onerror="this.style.display='none'" alt="Cena 4">
-                <h2 class="text-center leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)] px-4 text-2xl md:text-4xl text-white font-light tracking-wide">De todos os roteiros, roupas e momentos <br class="br-mobile">que já dividimos...</h2>
+        <div id="scene-4" class="scene p-4 md:p-6 w-full">
+            <div class="absolute inset-0 z-0 ken-burns-img bg-cover bg-center bg-no-repeat opacity-40 blur-2xl scale-110" style="background-image: url('foto3.jpg');"></div>
+            <div class="absolute inset-0 z-10 bg-black/60"></div>
+            <div class="relative z-20 w-full max-w-4xl flex flex-col items-center">
+                <img src="foto3.jpg" class="h-[45vh] md:h-[55vh] w-auto object-contain rounded-md shadow-2xl border border-white/10 mb-8 md:mb-12" onerror="this.style.display='none'" alt="Cena 4">
+                <h2 class="text-center leading-snug drop-shadow-[0_4px_10px_rgba(0,0,0,0.9)] px-2 text-2xl md:text-4xl text-white font-light tracking-wide">De todos os roteiros, roupas e momentos que já dividimos...</h2>
             </div>
         </div>
 
-        <div id="scene-5" class="scene overflow-hidden p-6 bg-black z-20">
-            <h2 class="relative z-20 text-center leading-tight max-w-5xl px-4 text-4xl md:text-7xl text-netflixRed font-black tracking-tighter uppercase drop-shadow-[0_0_30px_rgba(229,9,20,0.8)] mt-auto mb-auto">Este é só o nosso <br>1º Dia dos Namorados.</h2>
+        <div id="scene-5" class="scene overflow-hidden p-6 bg-black z-30">
+            <h2 class="relative z-20 text-center leading-tight max-w-5xl px-4 text-4xl md:text-7xl text-netflixRed font-black tracking-tighter uppercase drop-shadow-[0_0_40px_rgba(229,9,20,0.8)] mt-auto mb-auto">Este é só o nosso <br>1º Dia dos Namorados.</h2>
         </div>
     </div>
 
@@ -125,11 +130,12 @@
         </div>
     </nav>
 
-    <!-- 🎬 HERO SECTION -->
-    <header class="relative min-h-[92vh] flex flex-col justify-end pb-16 md:pb-24 px-6 md:px-16 pt-32 overflow-hidden bg-darkBg">
+    <!-- 🎬 HERO SECTION (Visual Fixo - Bg Restaurado) -->
+    <header class="relative min-h-[95vh] flex flex-col justify-end pb-16 md:pb-24 px-6 md:px-16 pt-32 overflow-hidden">
+        <!-- A imagem Hero voltou a ser o destaque da tela -->
         <div class="absolute inset-0 bg-cover bg-center md:bg-top bg-no-repeat -z-20 scale-105" style="background-image: url('hero.jpg')"></div>
-        <div class="absolute inset-0 bg-gradient-to-t from-darkBg via-darkBg/80 to-transparent -z-10"></div>
-        <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-transparent to-transparent -z-10"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent -z-10"></div>
+        <div class="absolute inset-0 bg-black/30 -z-10"></div>
         
         <div class="max-w-3xl space-y-5 relative z-10 scroll-hidden scroll-visible transition-all duration-1000 ease-out">
             <div class="flex items-center gap-2.5 mb-1">
@@ -146,7 +152,7 @@
                     <span class="text-[9px] tracking-tight">TOP</span>
                     <span class="text-xl -mt-1 font-extrabold">1</span>
                 </div>
-                <span class="text-white font-bold text-lg md:text-xl drop-shadow-md tracking-tight">
+                <span class="text-white font-bold text-lg md:text-xl drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] tracking-tight">
                     Série mais assistida hoje no meu coração
                 </span>
             </div>
@@ -159,7 +165,7 @@
                 <span class="border border-slate-500 text-slate-300 px-1 py-0.5 rounded-sm text-[10px] font-bold">HD</span>
             </div>
 
-            <p class="text-base md:text-xl text-slate-200 max-w-2xl leading-relaxed font-medium drop-shadow-lg text-justify md:text-left">
+            <p class="text-base md:text-xl text-slate-200 max-w-2xl leading-relaxed drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] text-justify md:text-left font-medium">
                 Um romance eletrizante sobre dois caminhos que se cruzam em Recife. Nossa história de 8 meses chega ao seu primeiro e inesquecível Dia dos Namorados. Dê o play e aumente o som.
             </p>
 
@@ -172,7 +178,7 @@
         </div>
     </header>
 
-    <!-- 📺 EPISÓDIOS -->
+    <!-- 📺 EPISÓDIOS (Gerados via JS) -->
     <section class="px-5 md:px-16 py-16 md:py-20 bg-darkBg relative z-20" id="episodes-section">
         <div class="w-16 h-1.5 bg-netflixRed mb-8 scroll-hidden rounded-full"></div>
         <h2 class="text-2xl md:text-4xl font-bold text-white mb-10 md:mb-12 scroll-hidden tracking-tight">Episódios (1 por Mês)</h2>
@@ -213,26 +219,22 @@
         <span class="font-light text-neutral-700 normal-case mt-1 inline-block">Feito com ❤️ para Anny Kelly</span>
     </footer>
 
-    <!-- SCRIPT DE INTERAÇÕES E LÓGICA -->
+    <!-- 🛠️ SCRIPT DE INTERAÇÕES E LÓGICA -->
     <script>
         // --- CONFIGURAÇÕES ---
         const TOTAL_FOTOS = 8;
         const TIMINGS = {
-            tudumDelay: 0,
-            // Aumentei o delay da música para 3.2s para o Tudum destacar bem sozinho
-            musicDelay: 3200, 
-            scene0Duration: 2800, // N Logo
+            musicDelay: 3000, // Dá tempo para o Tudum ecoar
+            scene0Duration: 2800,
             sceneDuration: 8000,
             climaxDuration: 4000,
             skipFadeIn: 5000
         };
 
-        // --- ESTADOS ---
         let isPlaying = false;
         let isFirstPlay = true;
         let introTimeouts = [];
 
-        // --- ELEMENTOS ---
         const els = {
             music: document.getElementById('audio-music'),
             tudum: document.getElementById('audio-tudum'),
@@ -248,7 +250,6 @@
 
         // --- INICIALIZAÇÃO ---
         document.addEventListener('DOMContentLoaded', () => {
-            // Garante volume máximo programático no load
             els.tudum.volume = 1.0;
             els.music.volume = 1.0;
             renderEpisodes();
@@ -256,16 +257,15 @@
             initScrollAnimation();
         });
 
-        // --- FUNÇÕES ---
-
+        // --- FUNÇÕES DE RENDERIZAÇÃO ---
         function renderGallery() {
             let html = '';
             for (let i = 1; i <= TOTAL_FOTOS; i++) {
                 const imgUrl = `foto${i}.jpg`;
                 html += `
-                    <div class="relative aspect-[4/5] md:aspect-[16/9] bg-neutral-900 rounded-sm overflow-hidden cursor-pointer group shadow-xl border border-transparent hover:border-neutral-700 transition-all duration-300 flex items-center justify-center scroll-hidden overflow-hidden" onclick="playEpisodeHint()">
-                        <div class="absolute inset-0 w-full h-full bg-cover bg-center blur-xl opacity-30 scale-110 z-0" style="background-image: url('${imgUrl}')"></div>
-                        <img src="${imgUrl}" loading="lazy" class="relative z-10 max-h-full max-w-full object-contain drop-shadow-2xl transition-transform duration-500 ease-out group-hover:scale-105" alt="Cena Marcante ${i}" onerror="handleImgError(this)">
+                    <div class="relative aspect-[4/5] md:aspect-[16/9] bg-neutral-900 rounded-sm overflow-hidden cursor-pointer group shadow-xl border border-transparent hover:border-neutral-700 transition-all duration-300 flex items-center justify-center scroll-hidden" onclick="playEpisodeHint()">
+                        <div class="absolute inset-0 w-full h-full bg-cover bg-center blur-xl opacity-40 scale-110 z-0" style="background-image: url('${imgUrl}')"></div>
+                        <img src="${imgUrl}" loading="lazy" class="relative z-10 max-h-full max-w-full object-contain drop-shadow-2xl transition-transform duration-500 ease-out group-hover:scale-105" alt="Cena Marcante ${i}" onerror="this.parentElement.style.display='none'">
                         <div class="absolute inset-0 z-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40 backdrop-blur-sm">
                             <div class="w-16 h-16 rounded-full border-2 border-white flex items-center justify-center bg-black/20 text-white shadow-2xl">
                                 <span class="text-3xl ml-1.5">▶</span>
@@ -275,7 +275,6 @@
                 `;
             }
             els.gallery.innerHTML = html;
-            document.querySelectorAll('#gallery-grid .scroll-hidden').forEach(el => observer.observe(el));
         }
 
         function renderEpisodes() {
@@ -309,10 +308,6 @@
             episodesContainer.innerHTML = epHtml;
         }
 
-        function handleImgError(img) {
-            img.parentElement.style.display = 'none';
-        }
-
         function playEpisodeHint() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
             if(!isPlaying && isFirstPlay) {
@@ -320,19 +315,20 @@
             }
         }
 
-        let observer;
+        // --- OBSERVER ---
         function initScrollAnimation() {
-            observer = new IntersectionObserver((entries) => {
+            const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('scroll-visible');
                     }
                 });
-            }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+            }, { threshold: 0.1, rootMargin: "0px 0px -20px 0px" });
 
             document.querySelectorAll('.scroll-hidden').forEach(el => observer.observe(el));
         }
 
+        // --- LÓGICA DE ÁUDIO E INTRO ---
         const preventScroll = (e) => e.preventDefault();
 
         function clearAllTimeouts() {
@@ -353,35 +349,29 @@
             document.body.style.overflow = '';
             document.removeEventListener('touchmove', preventScroll, { passive: false });
             els.nav.classList.remove('opacity-0');
+            
             if (isPlaying) {
-                // Força volume 100% antes do play
                 els.music.volume = 1.0; 
-                els.music.play().catch(e => console.error("Auto-play final bloqueado:", e));
+                els.music.play().catch(e => console.error(e));
             }
         }
 
         els.btnSkip.addEventListener('click', finishIntro);
 
         els.btnPlay.addEventListener('click', () => {
-            // HACK DE ÁUDIO BLINDADO E ATUALIZADO PARA MOBILE
+            // SOLUÇÃO DE ÁUDIO LIVRE DE BUGS (Race condition resolvida)
             if (isFirstPlay) {
-                // Garante volume máximo programático no exato momento do clique
                 els.tudum.volume = 1.0;
                 els.music.volume = 1.0;
                 
-                // Pré-carrega e 'destrava' o Tudum prioritariamente
-                let p1 = els.tudum.play();
-                if(p1 !== undefined) {
-                    p1.then(() => {
-                        els.tudum.pause();
-                        els.tudum.currentTime = 0;
+                // Nós iniciamos apenas a música em background para "desbloquear" a permissão do mobile.
+                // O Tudum nós tocaremos DIRETAMENTE daqui a pouco na função startIntroTimeline.
+                let unlockPlay = els.music.play();
+                if(unlockPlay !== undefined) {
+                    unlockPlay.then(() => {
+                        els.music.pause();
+                        els.music.currentTime = 0;
                     }).catch(() => {});
-                }
-                
-                // 'Destrava' a música principal
-                let p2 = els.music.play();
-                if(p2 !== undefined) {
-                    p2.then(() => els.music.pause()).catch(() => {});
                 }
                 
                 isFirstPlay = false;
@@ -393,11 +383,12 @@
                 els.playIcon.innerText = "⏸";
                 els.playText.innerText = "Pausar";
 
+                // Se a música está no começo, rodamos a intro de suspense
                 if (els.music.currentTime === 0 || els.music.paused) {
                     startIntroTimeline();
                 } else {
-                    els.music.volume = 1.0; // Garante volume alto no resume
-                    els.music.play().catch(e => console.error("Erro ao dar play:", e));
+                    els.music.volume = 1.0; 
+                    els.music.play().catch(e => console.error("Erro no play:", e));
                 }
             } else {
                 pauseContext();
@@ -411,7 +402,7 @@
             els.music.pause();
             els.tudum.pause();
             if(!els.intro.classList.contains('hidden')) {
-                finishIntro();
+                finishIntro(); 
             }
         }
 
@@ -427,15 +418,15 @@
             els.nav.classList.add('opacity-0');
             els.btnSkip.classList.add('opacity-0');
 
-            // Play direto nos áudios (Tudum primeiro)
-            els.tudum.volume = 1.0; // Volume máximo
+            // 1. O TUDUM TOCA AGORA, DIRETAMENTE JUNTO COM O CLIQUE
             els.tudum.currentTime = 0;
-            els.tudum.play().catch(e => console.log("Tudum blocked", e));
+            els.tudum.volume = 1.0;
+            els.tudum.play().catch(e => console.log("Tudum error:", e));
             
-            // Música entra com delay maior para destacar o Tudum
+            // 2. A música espera o Tudum brilhar para entrar suavemente
             introTimeouts.push(setTimeout(() => {
                 if(isPlaying) {
-                    els.music.volume = 1.0; // Garante volume máximo
+                    els.music.volume = 1.0;
                     els.music.play().catch(e => console.log(e));
                 }
             }, TIMINGS.musicDelay));
