@@ -9,20 +9,18 @@
     <meta property="og:title" content="PedroFlix | Feliz Dia dos Namorados">
     <meta property="og:description" content="Uma surpresa especial para a Dra. Anny. Nossa história de 8 meses em uma temporada inesquecível.">
     <meta property="og:type" content="website">
-    <!-- Se tiver uma imagem de capa, coloque a URL aqui: <meta property="og:image" content="url_da_imagem.jpg"> -->
     
     <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     
     <script>
-        // Configuração customizada do Tailwind para aproximar cores da Netflix
+        // Configuração customizada do Tailwind
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
                         netflixRed: '#E50914',
                         darkBg: '#141414',
-                        cardBg: '#181818'
                     }
                 }
             }
@@ -45,7 +43,7 @@
         .scene { opacity: 0; pointer-events: none; transition: opacity 1.2s ease-in-out; position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 10; }
         .scene.active { opacity: 1; pointer-events: auto; }
         
-        /* Animação N da Netflix (Mais suave) */
+        /* Animação N da Netflix */
         @keyframes netflixN {
             0% { transform: scale(0.5); opacity: 0; }
             30% { transform: scale(1); opacity: 1; }
@@ -58,7 +56,7 @@
         .scroll-hidden { opacity: 0; transform: translateY(30px); transition: opacity 1s out, transform 1s ease-out; will-change: transform, opacity; }
         .scroll-visible { opacity: 1; transform: translateY(0); }
         
-        /* Efeito Ken Burns (Zoom Cinematográfico) nas fotos da intro */
+        /* Efeito Ken Burns nas fotos da intro */
         @keyframes kenBurns { 
             from { transform: scale(1); } 
             to { transform: scale(1.1); } 
@@ -72,7 +70,7 @@
         }
         .btn-attention { animation: pulse-red 2s infinite; }
 
-        /* Utilitário para quebra de linha opcional em mobile */
+        /* Quebra de linha opcional em mobile */
         .br-mobile { display: block; }
         @media (min-width: 768px) { .br-mobile { display: inline; } }
     </style>
@@ -86,26 +84,25 @@
     <!-- 🎬 ABERTURA (O SUSPENSE) -->
     <div id="intro-overlay" class="fixed inset-0 z-[99999] bg-black hidden touch-none flex items-center justify-center overflow-hidden">
         
-        <!-- Botão Pular (UI Melhorada) -->
+        <!-- Botão Pular -->
         <button id="btn-skip" class="absolute bottom-10 right-6 z-[100000] bg-black/40 hover:bg-neutral-800 border border-neutral-600 text-white px-5 py-2.5 rounded-sm text-sm md:text-base font-medium transition-all flex items-center gap-2 opacity-0 cursor-pointer shadow-2xl" style="transition: opacity 1s; transition-delay: 5s;">
-            PULAR ABERTURA <span class="text-xl">⏭</span>
+            PULAR ABERTURA <span class="text-lg">⏭</span>
         </button>
 
-        <!-- Cena 0: O Logo N (Animação Refinada) -->
+        <!-- Cena 0: O Logo N -->
         <div id="scene-0" class="scene z-50">
             <span class="text-netflixRed text-[12rem] md:text-[20rem] font-black tracking-tighter drop-shadow-[0_0_30px_rgba(229,9,20,0.5)]">N</span>
         </div>
 
-        <!-- Cenas de Foto + Texto (UI Melhorada para Leitura) -->
+        <!-- Cenas de Foto + Texto -->
         <!-- Cena 1 -->
         <div id="scene-1" class="scene p-4 md:p-6">
             <div class="absolute inset-0 z-0 ken-burns-img bg-cover bg-center bg-no-repeat" style="background-image: url('foto1.jpg');"></div>
-            <!-- Gradiente para garantir leitura do texto -->
             <div class="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/40 z-1"></div>
             
             <div class="relative z-10 w-full max-w-4xl flex flex-col items-center">
                 <img src="foto1.jpg" class="h-[45vh] md:h-[60vh] object-contain rounded-sm shadow-2xl border border-neutral-800 mb-8 md:mb-12" onerror="this.style.display='none'">
-                <h2 class="text-center leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)] px-4 text-2xl md:text-4xl text-white font-light tracking-wide">Há exatos 8 meses, nossa história deu o primeiro play...h2>
+                <h2 class="text-center leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)] px-4 text-2xl md:text-4xl text-white font-light tracking-wide">Há exatos 8 meses, nossa história deu o primeiro play...</h2>
             </div>
         </div>
 
@@ -116,7 +113,7 @@
             
             <div class="relative z-10 w-full max-w-4xl flex flex-col items-center">
                 <img src="foto2.jpg" class="h-[45vh] md:h-[60vh] object-contain rounded-sm shadow-2xl border border-neutral-800 mb-8 md:mb-12" onerror="this.style.display='none'">
-                <h2 class="text-center leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)] px-4 text-2xl md:text-4xl text-white font-light tracking-wide">...e no meio do nosso próprio carnaval, <br class="br-mobile">eu encontrei o meu lugar.h2>
+                <h2 class="text-center leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)] px-4 text-2xl md:text-4xl text-white font-light tracking-wide">...e no meio do nosso próprio carnaval, <br class="br-mobile">eu encontrei o meu lugar.</h2>
             </div>
         </div>
 
@@ -127,7 +124,7 @@
             
             <div class="relative z-10 w-full max-w-4xl flex flex-col items-center">
                 <img src="foto4.jpg" class="h-[45vh] md:h-[60vh] object-contain rounded-sm shadow-2xl border border-neutral-800 mb-8 md:mb-12" onerror="this.style.display='none'">
-                <h2 class="text-center leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)] px-4 text-2xl md:text-4xl text-white font-light tracking-wide">Eu vi você brilhar, conquistar seus sonhos <br class="br-mobile">e se tornar uma fonoaudióloga incrível.h2>
+                <h2 class="text-center leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)] px-4 text-2xl md:text-4xl text-white font-light tracking-wide">Eu vi você brilhar, conquistar seus sonhos <br class="br-mobile">e se tornar uma fonoaudióloga incrível.</h2>
             </div>
         </div>
 
@@ -138,35 +135,31 @@
             
             <div class="relative z-10 w-full max-w-4xl flex flex-col items-center">
                 <img src="foto3.jpg" class="h-[45vh] md:h-[60vh] object-contain rounded-sm shadow-2xl border border-neutral-800 mb-8 md:mb-12" onerror="this.style.display='none'">
-                <h2 class="text-center leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)] px-4 text-2xl md:text-4xl text-white font-light tracking-wide">De todos os roteiros, roupas e momentos <br class="br-mobile">que já dividimos...h2>
+                <h2 class="text-center leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)] px-4 text-2xl md:text-4xl text-white font-light tracking-wide">De todos os roteiros, roupas e momentos <br class="br-mobile">que já dividimos...</h2>
             </div>
         </div>
 
-        <!-- Cena 5 (Clímax - Impacto Visual) -->
+        <!-- Cena 5 (Clímax) -->
         <div id="scene-5" class="scene overflow-hidden p-6 bg-black z-20">
-            <h2 class="relative z-20 text-center leading-tight max-w-5xl px-4 text-4xl md:text-7xl text-netflixRed font-black tracking-tighter uppercase drop-shadow-[0_0_30px_rgba(229,9,20,0.8)] mt-auto mb-auto">Este é só o nosso <br>1º Dia dos Namorados.h2>
+            <h2 class="relative z-20 text-center leading-tight max-w-5xl px-4 text-4xl md:text-7xl text-netflixRed font-black tracking-tighter uppercase drop-shadow-[0_0_30px_rgba(229,9,20,0.8)] mt-auto mb-auto">Este é só o nosso <br>1º Dia dos Namorados.</h2>
         </div>
     </div>
 
-    <!-- 📱 NAVBAR (Estilo Mais Fiel) -->
+    <!-- 📱 NAVBAR -->
     <nav class="fixed top-0 w-full z-40 bg-gradient-to-b from-black/90 via-black/50 to-transparent px-4 md:px-12 py-4 flex justify-between items-center pointer-events-none transition-opacity duration-500" id="main-nav">
         <div class="text-netflixRed font-black tracking-tighter text-3xl md:text-4xl drop-shadow-lg">
             PEDRO<span class="font-light text-white">FLIX</span>
         </div>
-        <!-- Espaço para avatar se quisesse colocar futuramente à direita -->
     </nav>
 
-    <!-- 🎬 HERO SECTION (UI e Polimento) -->
+    <!-- 🎬 HERO SECTION -->
     <header class="relative min-h-[92vh] flex flex-col justify-end pb-16 md:pb-24 px-6 md:px-16 pt-32 overflow-hidden bg-darkBg">
-        <!-- Foto de Fundo com Ajuste Mobile -->
         <div class="absolute inset-0 bg-cover bg-center md:bg-top bg-no-repeat -z-20 scale-105" style="background-image: url('hero.jpg')"></div>
-        <!-- Gradientes de Fundo (Melhorados para contraste) -->
         <div class="absolute inset-0 bg-gradient-to-t from-darkBg via-darkBg/80 to-transparent -z-10"></div>
         <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-transparent to-transparent -z-10"></div>
         
         <div class="max-w-3xl space-y-5 relative z-10 scroll-hidden scroll-visible transition-all duration-1000 ease-out">
             <div class="flex items-center gap-2.5 mb-1">
-                <!-- N Badge Original Style -->
                 <span class="text-netflixRed text-3xl font-black drop-shadow-lg leading-none">N</span>
                 <span class="text-xs md:text-sm tracking-[0.4em] text-slate-200 font-bold uppercase drop-shadow-md">Série Original</span>
             </div>
@@ -175,7 +168,6 @@
                 Anny
             </h1>
             
-            <!-- TOP 1 Badge Refinado -->
             <div class="flex items-center gap-3 py-1.5">
                 <div class="bg-netflixRed text-white font-black text-xs px-2.5 py-1.5 rounded-sm shadow-lg leading-none text-center flex flex-col items-center justify-center border border-netflixRed">
                     <span class="text-[9px] tracking-tight">TOP</span>
@@ -186,14 +178,11 @@
                 </span>
             </div>
             
-            <!-- Metadados Polidos -->
             <div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs md:text-sm font-semibold text-slate-200 mb-5 drop-shadow-md">
                 <span class="text-green-500 font-bold text-sm md:text-base">99% Relevante</span>
                 <span class="text-slate-300">2026</span>
-                <!-- Badge de Classificação Etária -->
                 <span class="border-2 border-slate-500 bg-slate-900/50 text-slate-200 px-2 py-0.5 rounded-sm font-bold text-xs">A14</span>
                 <span class="font-bold text-slate-300">1ª Temporada (8 Meses)</span>
-                <!-- Badge HD -->
                 <span class="border border-slate-500 text-slate-300 px-1 py-0.5 rounded-sm text-[10px] font-bold">HD</span>
             </div>
 
@@ -201,7 +190,6 @@
                 Um romance eletrizante sobre dois caminhos que se cruzam em Recife. Nossa história de 8 meses chega ao seu primeiro e inesquecível Dia dos Namorados. Dê o play e aumente o som.
             </p>
 
-            <!-- Botão Play com Feedback Visual -->
             <div class="flex gap-4 pt-8 relative z-50">
                 <button id="btn-play" class="flex items-center justify-center gap-3.5 bg-white text-black px-8 py-3.5 md:px-10 md:py-4 rounded-sm font-bold text-lg md:text-xl hover:bg-neutral-300 transition-all shadow-2xl active:scale-95 duration-150 w-full md:w-auto cursor-pointer btn-attention group">
                     <span id="play-icon" class="text-2xl transition-transform group-hover:scale-110">▶</span>
@@ -211,78 +199,27 @@
         </div>
     </header>
 
-    <!-- 📺 EPISÓDIOS (UI Polida) -->
+    <!-- 📺 EPISÓDIOS (Gerados via JS) -->
     <section class="px-5 md:px-16 py-16 md:py-20 bg-darkBg relative z-20" id="episodes-section">
         <div class="w-16 h-1.5 bg-netflixRed mb-8 scroll-hidden rounded-full"></div>
-        <h2 class="text-2xl md:text-4xl font-bold text-white mb-10 md:mb-12 scroll-hidden tracking-tight">Episódios</h2>
-        <div class="flex flex-col space-y-5 md:space-y-6 max-w-7xl mx-auto">
-            
-            <!-- EPISÓDIO LIST ITEM (Template otimizado) -->
-            <!-- Ep 1 -->
-            <div class="flex flex-row gap-4 md:gap-8 items-center p-4 md:p-6 hover:bg-neutral-800/60 transition-colors rounded-md group cursor-default scroll-hidden border-b border-neutral-800 md:border-none">
-                <div class="text-4xl md:text-7xl font-light text-neutral-600 group-hover:text-netflixRed transition-colors w-10 md:w-16 text-center font-mono tracking-tighter">1</div>
-                <div class="flex-1 w-full">
-                    <div class="flex justify-between items-start md:items-center mb-2 gap-2">
-                        <h3 class="text-base md:text-xl font-bold text-white leading-tight tracking-tight">Piloto: O Começo</h3>
-                        <span class="text-[11px] md:text-sm font-semibold text-slate-300 whitespace-nowrap mt-0.5 md:mt-0 font-mono">45m</span>
-                    </div>
-                    <p class="text-sm md:text-base text-slate-300 leading-relaxed">Há exatos 8 meses, o que era um simples acaso virou o enredo principal da minha vida.</p>
-                </div>
-            </div>
-
-            <!-- Ep 2 -->
-            <div class="flex flex-row gap-4 md:gap-8 items-center p-4 md:p-6 hover:bg-neutral-800/60 transition-colors rounded-md group cursor-default scroll-hidden border-b border-neutral-800 md:border-none">
-                <div class="text-4xl md:text-7xl font-light text-neutral-600 group-hover:text-netflixRed transition-colors w-10 md:w-16 text-center font-mono tracking-tighter">2</div>
-                <div class="flex-1 w-full">
-                    <div class="flex justify-between items-start md:items-center mb-2 gap-2">
-                        <h3 class="text-base md:text-xl font-bold text-white leading-tight tracking-tight">O Bloquinho do Amor</h3>
-                        <span class="text-[11px] md:text-sm font-semibold text-slate-300 whitespace-nowrap mt-0.5 md:mt-0 font-mono">52m</span>
-                    </div>
-                    <p class="text-sm md:text-base text-slate-300 leading-relaxed">Glitter, calor, Carnaval e muita alegria. No meio da multidão, a gente encontrou o nosso próprio ritmo.</p>
-                </div>
-            </div>
-
-            <!-- Ep 3 -->
-            <div class="flex flex-row gap-4 md:gap-8 items-center p-4 md:p-6 hover:bg-neutral-800/60 transition-colors rounded-md group cursor-default scroll-hidden border-b border-neutral-800 md:border-none">
-                <div class="text-4xl md:text-7xl font-light text-neutral-600 group-hover:text-netflixRed transition-colors w-10 md:w-16 text-center font-mono tracking-tighter">3</div>
-                <div class="flex-1 w-full">
-                    <div class="flex justify-between items-start md:items-center mb-2 gap-2">
-                        <h3 class="text-base md:text-xl font-bold text-white leading-tight tracking-tight">A Fonoaudióloga da Minha Vida</h3>
-                        <span class="text-[11px] md:text-sm font-semibold text-slate-300 whitespace-nowrap mt-0.5 md:mt-0 font-mono">1h 10m</span>
-                    </div>
-                    <p class="text-sm md:text-base text-slate-300 leading-relaxed">Ver você de jaleco e acompanhar sua dedicação me enche de orgulho. Serei sempre o fã número 1 da Dra. Anny.</p>
-                </div>
-            </div>
-
-            <!-- Ep 4 -->
-            <div class="flex flex-row gap-4 md:gap-8 items-center p-4 md:p-6 hover:bg-neutral-800/60 transition-colors rounded-md group cursor-default scroll-hidden">
-                <div class="text-4xl md:text-7xl font-light text-neutral-600 group-hover:text-netflixRed transition-colors w-10 md:w-16 text-center font-mono tracking-tighter">4</div>
-                <div class="flex-1 w-full">
-                    <div class="flex justify-between items-start md:items-center mb-2 gap-2">
-                        <h3 class="text-base md:text-xl font-bold text-white leading-tight tracking-tight">Season Finale: O 1º Dia dos Namorados</h3>
-                        <span class="text-[11px] md:text-sm font-semibold text-slate-300 whitespace-nowrap mt-0.5 md:mt-0 font-mono">1h 30m</span>
-                    </div>
-                    <p class="text-sm md:text-base text-slate-300 leading-relaxed">Trajes de gala, Olinda ou um barzinho. O primeiro de muitos dias 12 que vamos comemorar juntos.</p>
-                </div>
-            </div>
-
+        <h2 class="text-2xl md:text-4xl font-bold text-white mb-10 md:mb-12 scroll-hidden tracking-tight">Episódios (1 por Mês)</h2>
+        <div id="episodes-container" class="flex flex-col space-y-5 md:space-y-6 max-w-7xl mx-auto">
+            <!-- Renderizado via Javascript -->
         </div>
     </section>
 
-    <!-- 📸 GALERIA (UI Otimizada Mobile e Desktop) -->
+    <!-- 📸 GALERIA -->
     <section class="px-5 md:px-16 py-16 md:py-20 bg-darkBg">
         <div class="w-16 h-1.5 bg-netflixRed mb-8 scroll-hidden rounded-full"></div>
         <h2 class="text-2xl md:text-4xl font-bold text-white mb-10 md:mb-12 scroll-hidden tracking-tight">Cenas Marcantes (8 Meses)</h2>
         
-        <!-- Grid Responsivo: 1 coluna no mobile (impacto), 2 em tablet, 4 no desktop -->
         <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5 md:gap-6 max-w-7xl mx-auto">
-            <!-- Renderizado via JS para performance e fallback -->
+            <!-- Renderizado via JS -->
         </div>
     </section>
 
-    <!-- ❤️ GRAN FINALE (Impacto Emocional) -->
+    <!-- ❤️ GRAN FINALE -->
     <section class="px-6 md:px-16 py-28 md:py-36 bg-black text-center relative overflow-hidden">
-        <!-- Efeito de Luz de Fundo Sutil -->
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-2xl h-96 bg-netflixRed/15 rounded-full blur-[120px] pointer-events-none"></div>
         
         <div class="max-w-3xl mx-auto space-y-10 relative z-10 scroll-hidden transition-all duration-1000 delay-150">
@@ -300,7 +237,7 @@
         </div>
     </section>
 
-    <!-- 🖥️ FOOTER (Padrão Netflix) -->
+    <!-- 🖥️ FOOTER -->
     <footer class="text-center py-12 text-[11px] font-medium text-neutral-600 tracking-wider uppercase bg-black border-t border-neutral-900/50 pb-24 md:pb-12">
         Uma Produção Original PedroFlix © 2026 <br>
         <span class="font-light text-neutral-700 normal-case mt-1 inline-block">Feito com ❤️ para Anny Kelly</span>
@@ -310,14 +247,12 @@
     <script>
         // --- CONFIGURAÇÕES ---
         const TOTAL_FOTOS = 8;
-        // Tempos da intro em milissegundos
         const TIMINGS = {
-            tudumDelay: 0,
-            musicDelay: 2500, // Começa junto com a primeira foto
-            scene0Duration: 2800, // N Logo
-            sceneDuration: 8000, // Duração de cada foto
+            musicDelay: 2500,
+            scene0Duration: 2800,
+            sceneDuration: 8000,
             climaxDuration: 4000,
-            skipFadeIn: 5000 // Quando o botão pular aparece
+            skipFadeIn: 5000
         };
 
         // --- ESTADOS ---
@@ -342,25 +277,20 @@
         // --- INICIALIZAÇÃO ---
         document.addEventListener('DOMContentLoaded', () => {
             renderGallery();
+            renderEpisodes();
             initScrollAnimation();
         });
 
         // --- FUNÇÕES ---
 
-        // 1. Renderizar Galeria (Otimizada com CSS Background para fallback/blur)
         function renderGallery() {
             let html = '';
             for (let i = 1; i <= TOTAL_FOTOS; i++) {
                 const imgUrl = `foto${i}.jpg`;
                 html += `
                     <div class="relative aspect-[4/5] md:aspect-[16/9] bg-neutral-900 rounded-sm overflow-hidden cursor-pointer group shadow-xl border border-transparent hover:border-neutral-700 transition-all duration-300 flex items-center justify-center scroll-hidden overflow-hidden" onclick="playEpisodeHint()">
-                        <!-- Fundo Blur (Gerado por CSS para performance) -->
                         <div class="absolute inset-0 w-full h-full bg-cover bg-center blur-xl opacity-30 scale-110 z-0" style="background-image: url('${imgUrl}')"></div>
-                        
-                        <!-- Imagem Principal -->
                         <img src="${imgUrl}" loading="lazy" class="relative z-10 max-h-full max-w-full object-contain drop-shadow-2xl transition-transform duration-500 ease-out group-hover:scale-105" alt="Cena Marcante ${i}" onerror="handleImgError(this)">
-                        
-                        <!-- Overlay de Play ao Hover -->
                         <div class="absolute inset-0 z-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40 backdrop-blur-sm">
                             <div class="w-16 h-16 rounded-full border-2 border-white flex items-center justify-center bg-black/20 text-white shadow-2xl">
                                 <span class="text-3xl ml-1.5">▶</span>
@@ -370,32 +300,56 @@
                 `;
             }
             els.gallery.innerHTML = html;
-            // Re-inicializa observer para os novos elementos
-            document.querySelectorAll('#gallery-grid .scroll-hidden').forEach(el => observer.observe(el));
+        }
+
+        function renderEpisodes() {
+            const episodesContainer = document.getElementById('episodes-container');
+            const episodesList = [
+                { num: "1", duration: "45m", title: "Piloto: O Começo", desc: "Onde tudo começou. O que era um simples acaso virou o enredo principal da minha vida." },
+                { num: "2", duration: "50m", title: "Os Primeiros Capítulos", desc: "Nossas primeiras conversas e encontros, descobrindo que nossos roteiros se encaixavam perfeitamente." },
+                { num: "3", duration: "1h 05m", title: "Cena de Cinema", desc: "De todos os filmes que já assistimos no escurinho, a nossa história rapidamente se tornou a minha favorita." },
+                { num: "4", duration: "1h 15m", title: "O Bloquinho do Amor", desc: "Glitter, calor, Carnaval e muita alegria. No meio da multidão, a gente encontrou o nosso próprio ritmo." },
+                { num: "5", duration: "1h 10m", title: "A Fonoaudióloga", desc: "Ver você de jaleco e acompanhar sua dedicação. Serei sempre o fã número 1 da Dra. Anny." },
+                { num: "6", duration: "55m", title: "A Nossa Rotina", desc: "Apoiando um ao outro no dia a dia. A certeza de que escolhemos a pessoa certa para dividir a jornada." },
+                { num: "7", duration: "1h 20m", title: "Passeios e Risadas", desc: "Momentos em Olinda, idas ao barzinho ou simplesmente não fazer nada juntos. Com você, o cenário não importa." },
+                { num: "8", duration: "1h 30m", title: "Season Finale: O 1º Dia dos Namorados", desc: "Completamos 8 meses juntos exatamente agora. O primeiro de muitos dias 12 que vamos comemorar." }
+            ];
+
+            let epHtml = '';
+            episodesList.forEach(ep => {
+                epHtml += `
+                    <div class="flex flex-row gap-4 md:gap-8 items-center p-4 md:p-6 hover:bg-neutral-800/60 transition-colors rounded-md group cursor-default scroll-hidden border-b border-neutral-800 md:border-none">
+                        <div class="text-4xl md:text-7xl font-light text-neutral-600 group-hover:text-netflixRed transition-colors w-10 md:w-16 text-center font-mono tracking-tighter">${ep.num}</div>
+                        <div class="flex-1 w-full">
+                            <div class="flex justify-between items-start md:items-center mb-2 gap-2">
+                                <h3 class="text-base md:text-xl font-bold text-white leading-tight tracking-tight">${ep.title}</h3>
+                                <span class="text-[11px] md:text-sm font-semibold text-slate-300 whitespace-nowrap mt-0.5 md:mt-0 font-mono">${ep.duration}</span>
+                            </div>
+                            <p class="text-sm md:text-base text-slate-300 leading-relaxed">${ep.desc}</p>
+                        </div>
+                    </div>
+                `;
+            });
+            episodesContainer.innerHTML = epHtml;
         }
 
         function handleImgError(img) {
-            // Se a imagem falhar, esconde o card ou coloca um placeholder
             img.parentElement.style.display = 'none';
         }
 
         function playEpisodeHint() {
-            // Feedback simples ao clicar na galeria
             window.scrollTo({ top: 0, behavior: 'smooth' });
             if(!isPlaying && isFirstPlay) {
                  els.btnPlay.classList.add('btn-attention');
             }
         }
 
-        // 2. Observer para Scroll Suave (UX)
         let observer;
         function initScrollAnimation() {
             observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('scroll-visible');
-                        // Opcional: parar de observar após aparecer
-                        // observer.unobserve(entry.target);
                     }
                 });
             }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
@@ -403,9 +357,6 @@
             document.querySelectorAll('.scroll-hidden').forEach(el => observer.observe(el));
         }
 
-        // 3. Lógica do Trailer, Áudio e Suspense
-        
-        // Impede arrasto no mobile (bounce effect) durante a Intro (UX Critical)
         const preventScroll = (e) => e.preventDefault();
 
         function clearAllTimeouts() {
@@ -419,139 +370,96 @@
             });
         }
 
-        // Função para encerrar a intro e liberar o site
         function finishIntro() {
             clearAllTimeouts();
             hideAllScenes();
             els.intro.classList.add('hidden');
             document.body.style.overflow = '';
             document.removeEventListener('touchmove', preventScroll, { passive: false });
-            
-            // UX: Garante que a nav bar reapareça suavemente
             els.nav.classList.remove('opacity-0');
-
             if (isPlaying) {
-                // Tenta dar play na música caso o autoplay delay tenha falhado
-                els.music.play().catch(e => console.error("Erro ao tocar música final:", e));
+                els.music.play().catch(e => console.error(e));
             }
         }
 
-        // Botão Pular
         els.btnSkip.addEventListener('click', finishIntro);
 
-        // Botão Play Principal
         els.btnPlay.addEventListener('click', () => {
-            
-            // --- HACK CRÍTICO DE ÁUDIO PARA MOBILE (iOS/Android) ---
-            // Navegadores mobile bloqueiam áudio que não inicia DIRETAMENTE num clique.
-            // Como nossa música tem um delay (setTimeout), precisamos dar um play/pause rápido agora
-            // para "desbloquear" o canal de áudio para este elemento.
             if (isFirstPlay) {
-                els.music.play().then(() => {
-                    els.music.pause(); // Pausa imediatamente, vai tocar com delay depois
-                }).catch(e => console.log("Unlock bloqueado (esperado):", e));
-                
+                els.music.play().then(() => els.music.pause()).catch(() => {});
                 isFirstPlay = false;
                 els.btnPlay.classList.remove('btn-attention');
             }
-            // -------------------------------------------------------
 
             if (!isPlaying) {
                 isPlaying = true;
-                showPauseUI();
+                els.playIcon.innerText = "⏸";
+                els.playText.innerText = "Pausar";
 
                 if (els.music.currentTime === 0) {
                     startIntroTimeline();
                 } else {
-                    els.music.play().catch(e => console.error("Erro ao resumir música:", e));
+                    els.music.play().catch(e => console.error(e));
                 }
             } else {
                 pauseContext();
             }
         });
 
-        function showPauseUI() {
-            els.playIcon.innerText = "⏸";
-            els.playText.innerText = "Pausar";
-        }
-
-        function showPlayUI() {
-            els.playIcon.innerText = "▶";
-            els.playText.innerText = isFirstPlay ? "Iniciar Episódio" : "Continuar";
-        }
-
         function pauseContext() {
             isPlaying = false;
-            showPlayUI();
+            els.playIcon.innerText = "▶";
+            els.playText.innerText = isFirstPlay ? "Iniciar Episódio" : "Continuar";
             els.music.pause();
             els.tudum.pause();
-            // Se pausar durante a intro, fecha a intro
             if(!els.intro.classList.contains('hidden')) {
                 finishIntro();
             }
         }
 
-        // A MAQUINA DE TEMPOS (Timeline da Intro)
         function startIntroTimeline() {
             clearAllTimeouts();
             hideAllScenes();
-            
             els.intro.classList.remove('hidden');
-            document.body.style.overflow = 'hidden'; // Trava scroll desktop
-            document.addEventListener('touchmove', preventScroll, { passive: false }); // Trava scroll mobile crítico
+            document.body.style.overflow = 'hidden';
+            document.addEventListener('touchmove', preventScroll, { passive: false });
             window.scrollTo(0, 0);
-            
-            // Esconde Nav para imersão
             els.nav.classList.add('opacity-0');
-            // Reseta botão pular
             els.btnSkip.classList.add('opacity-0');
 
-            // --- Timeline de Áudio ---
             els.tudum.currentTime = 0;
-            els.tudum.play().catch(e => console.log("Tudum blocked", e));
+            els.tudum.play().catch(() => {});
             
             introTimeouts.push(setTimeout(() => {
-                if(isPlaying) els.music.play().catch(e => console.error("Música falhou no delay:", e));
+                if(isPlaying) els.music.play().catch(() => {});
             }, TIMINGS.musicDelay));
 
-            // --- Timeline Visual ---
-            let currentTime = 0;
-
-            // Botão Pular aparece
             introTimeouts.push(setTimeout(() => els.btnSkip.classList.remove('opacity-0'), TIMINGS.skipFadeIn));
 
-            // Cena 0: N Logo
             if(els.scenes[0]) {
                 els.scenes[0].classList.add('active', 'animate-n');
                 introTimeouts.push(setTimeout(() => els.scenes[0].classList.remove('active'), TIMINGS.scene0Duration));
             }
 
-            currentTime = TIMINGS.scene0Duration;
+            let currentTime = TIMINGS.scene0Duration;
 
-            // Cenas 1 a 4 (Fotos)
             for(let i = 1; i <= 4; i++) {
                 if(!els.scenes[i]) continue;
-                
-                // Show scene
                 introTimeouts.push(setTimeout(() => {
-                    hideAllScenes(); // Garante limpeza
+                    hideAllScenes();
                     els.scenes[i].classList.add('active');
                 }, currentTime));
-
                 currentTime += TIMINGS.sceneDuration;
             }
 
-            // Cena 5: Clímax
             if(els.scenes[5]) {
                 introTimeouts.push(setTimeout(() => {
                     hideAllScenes();
                     els.scenes[5].classList.add('active');
                 }, currentTime));
-                
                 currentTime += TIMINGS.climaxDuration;
             }
 
-            // FIM
             introTimeouts.push(setTimeout(() => {
                 finishIntro();
             }, currentTime));
